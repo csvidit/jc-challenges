@@ -1,1 +1,1 @@
-# Vidit's Implementations
+# John Crickett's Coding Challanges - Challenge 1

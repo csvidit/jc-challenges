@@ -1,7 +1,7 @@
 import cmd
 
-class CCWC(cmd.Cmd):
-    
+class ccwc(cmd.Cmd):
+  
     prompt=">>"
     intro="Welcome to the CCWC shell."
     
@@ -28,18 +28,6 @@ class CCWC(cmd.Cmd):
                 print("Number of characters: ", (file.replace(" ", "")))
         elif comm ==  _:
                 print("Unknown command")
-                
-    def __readFile(self, fileName):
-        try: 
-            with open(fileName) as f:
-                return f.read()
-        except FileNotFoundError:
-            print("File not found.")
-            return None
-        except Exception as e:
-            print("Error: ", e)
-            return None
-            
 
 if __name__ == '__main__':
-    CCWC().cmdloop()
+    ccwc().cmdloop()
