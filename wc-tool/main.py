@@ -32,9 +32,6 @@ class ccwc(cmd.Cmd):
         if command == "-w":
             wordCount = file.count(" ")
             print("The number of words:", wordCount)
-            
-            
-       
                  
 
 if __name__ == '__main__':

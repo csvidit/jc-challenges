@@ -1,1 +1,1 @@
-# john-crickett-coding-challenges
+# John Crickett's Coding Challanges - Challenge 1
