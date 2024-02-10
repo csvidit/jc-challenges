@@ -18,15 +18,15 @@ class CCWC(cmd.Cmd):
         file = self.__readFile(fileName)
         # print(file)
         
-        match comm: 
-            case "-c":
-                encoded_bytes = file('utf-8')
-                print("Number of bytes: ", len(encoded_bytes))
-            case "-l":
+        if comm == "-c": 
+                print("Number of bytes: ", len(file))
+        elif comm == "-l":
                 print("Number of lines: ", len(file.split('\n')))
-            case "-w":
-                print("Number of words: ", len(file.split(' ')))
-            case _:
+        elif comm == "-w":
+                print("Number of words: ", (file.split(' '))) # 58164
+        elif comm == "-m":
+                print("Number of characters: ", (file.replace(" ", "")))
+        elif comm ==  _:
                 print("Unknown command")
                 
     def __readFile(self, fileName):
