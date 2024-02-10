@@ -1,45 +1,38 @@
 import cmd
 
-class CCWC(cmd.Cmd):
+class ccwc(cmd.Cmd):
+    prompt = ">>"
+    intro = "Welcome to ccwc tool. Type help for available commands."
     
-    prompt=">>"
-    intro="Welcome to the CCWC shell."
-    
-    def do_hello(self, line):
-        """Print a greeting."""
-        print("Hello, World", line)
-        
-    def do_quit(self, line):
-        """Exit the CLI."""
-        return True
-    
-    def do_ccwc(self, line):
-        comm, fileName = line.split()
-        file = self.__readFile(fileName)
-        # print(file)
-        
-        match comm: 
-            case "-c":
-                encoded_bytes = file('utf-8')
-                print("Number of bytes: ", len(encoded_bytes))
-            case "-l":
-                print("Number of lines: ", len(file.split('\n')))
-            case "-w":
-                print("Number of words: ", len(file.split(' ')))
-            case _:
-                print("Unknown command")
-                
     def __readFile(self, fileName):
-        try: 
+        try:
             with open(fileName) as f:
                 return f.read()
         except FileNotFoundError:
-            print("File not found.")
-            return None
+            print(f"The file {fileName} was not found.")
         except Exception as e:
-            print("Error: ", e)
-            return None
-            
+            print(f"An error occurred: {e}")
+    
+    def do_hello(self,line):
+        """Print a greeting"""
+        print("Hello World")
+
+    def do_quit(self, line):
+        """Exit the cli"""
+        return True  
+    
+    def do_ccwc(self, line):
+        command, fileName = line.split(" ")
+        file = self.__readFile(fileName)
+        if command == "-c":
+            print("number of bytes: ", len(file))
+        if command == "-l":
+            lineCount = file.count("\n")
+            print("The number of lines: " , lineCount)
+        if command == "-w":
+            wordCount = file.count(" ")
+            print("The number of words:", wordCount)
+                 
 
 if __name__ == '__main__':
-    CCWC().cmdloop()
+    ccwc().cmdloop()
